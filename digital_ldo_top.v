@@ -97,6 +97,43 @@ inverter ifake (
 ) 
 
 DigitalLDOLogic dll (
+	.clk(ldotop_clk), 
+	.rst(ldotop_rst), 
+	.comp_in(fake_output), 
+	.VDD(ldotop_vdd), 
+	.VSS(ldotop_vss), 
+	.out[0](pass_in_0), 
+	.out[1](pass_in_1), 
+	.out[2](pass_in_2), 
+	.out[3](pass_in_3), 
+	.out[4](pass_in_4), 
+	.out[5](pass_in_5), 
+	.out[6](pass_in_6),
+	.out[7](pass_in_7), 
+	.out[8](pass_in_8), 
+	.out[9](pass_in_9), 
+	.out[10](pass_in_10),
+        .out[11](pass_in_11),
+        .out[12](pass_in_12),
+        .out[13](pass_in_13),
+        .out[14](pass_in_14),
+        .out[15](pass_in_15),
+        .out[16](pass_in_16),
+        .out[17](pass_in_17),
+        .out[18](pass_in_18),
+        .out[19](pass_in_19),
+        .out[20](pass_in_20),
+	.out[21](pass_in_21),
+        .out[22](pass_in_22),
+        .out[23](pass_in_23),
+        .out[24](pass_in_24),
+        .out[25](pass_in_25),
+        .out[26](pass_in_26),
+        .out[27](pass_in_27),
+        .out[28](pass_in_28),
+        .out[29](pass_in_29),
+        .out[30](pass_in_30),
+	.out[31](pass_in_31)
 
 ) 
 
