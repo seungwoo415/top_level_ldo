@@ -1,0 +1,290 @@
+# Specify Global Variables
+gcd.clockPeriod: &CLK_PERIOD "5ns"
+gcd.verilogSrc: &VERILOG_SRC
+  - "src/digital_ldo_top.v"
+
+# Specify clock signals
+vlsi.inputs.clocks: [
+  {name: "clk", period: *CLK_PERIOD, uncertainty: "0.1ns"}
+]
+
+# Synthesis Constraints
+synthesis.inputs:
+  top_module: "digital_ldo_top"
+  input_files: *VERILOG_SRC
+
+# Placement Constraints
+vlsi.inputs.placement_constraints:
+  - path: "digital_ldo_top"
+    type: "toplevel"
+    x: 0
+    y: 0
+    width: 1200
+    height: 1200
+    margins:
+      left: 10
+      right: 10
+      top: 10
+      bottom: 10
+  - path: "digital_ldo_top/strong_arm"
+    type: "placement"
+    x: 200
+    y: 200
+    width: 200
+    height: 200
+  - path: "digital_ldo_top/rs_latch_new"
+    type: "placement"
+    x: 200
+    y: 200
+    width: 200
+    height: 200
+  - path: "digital_ldo_top/inverter_clk"
+    type: "placement"
+    x: 200
+    y: 200
+    width: 200
+    height: 200
+  - path: "digital_ldo_top/inverter_fake"
+    type: "placement"
+    x: 200
+    y: 200
+    width: 200
+    height: 200
+  - path: "digital_ldo_top/inverter_real"
+    type: "placement"
+    x: 200
+    y: 200
+    width: 200
+    height: 200
+  - path: "digital_ldo_top/DigitalLDOLogic"
+    type: "placement"
+    x: 200
+    y: 200
+    width: 200
+    height: 200
+  - path: "digital_ldo_top/pass_transistors"
+    type: "placement"
+    x: 200
+    y: 200
+    width: 200
+    height: 200
+
+vlsi.technology.extra_libraries_meta: ["append", "deepsubst"]
+vlsi.technology.extra_libraries:
+  - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/strong_armTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/strong_arm.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/strong_arm.gds"
+      corner:
+        nmos: "slow"
+        pmos: "slow"
+        temperature: "100 C"
+      supplies:
+        VDD: "1.60 V"
+        GND: "0 V"
+  - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/strong_armTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/strong_arm.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/strong_arm.gds"
+      corner:
+        nmos: "fast"
+        pmos: "fast"
+        temperature: "-40 C"
+      supplies:
+        VDD: "1.95 V"
+        GND: "0 V"
+  - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/strong_armTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/strong_arm.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/strong_arm.gds"
+      corner:
+        nmos: "typical"
+        pmos: "typical"
+        temperature: "025 C"
+      supplies:
+        VDD: "1.80 V"
+        GND: "0 V"
+   - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/rs_latch_newTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/rs_latch_new.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/rs_latch_new.gds"
+      corner:
+        nmos: "slow"
+        pmos: "slow"
+        temperature: "100 C"
+      supplies:
+        VDD: "1.60 V"
+        GND: "0 V"
+   - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/rs_latch_newTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/rs_latch_new.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/rs_latch_new.gds"
+      corner:
+        nmos: "fast"
+        pmos: "fast"
+        temperature: "-40 C"
+      supplies:
+        VDD: "1.95 V"
+        GND: "0 V"
+   - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/rs_latch_newTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/rs_latch_new.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/rs_latch_new.gds"
+      corner:
+        nmos: "typical"
+        pmos: "typical"
+        temperature: "025 C"
+      supplies:
+        VDD: "1.80 V"
+        GND: "0 V"
+   - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/inverterTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/inverter.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/inverter.gds"
+      corner:
+        nmos: "slow"
+        pmos: "slow"
+        temperature: "100 C"
+      supplies:
+        VDD: "1.60 V"
+        GND: "0 V"
+   - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/inverterTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/inverter.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/inverter.gds"
+      corner:
+        nmos: "fast"
+        pmos: "fast"
+        temperature: "-40 C"
+      supplies:
+        VDD: "1.95 V"
+        GND: "0 V"
+   - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/inverterTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/inverter.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/inverter.gds"
+      corner:
+        nmos: "typical"
+        pmos: "typical"
+        temperature: "025 C"
+      supplies:
+        VDD: "1.80 V"
+        GND: "0 V"
+   - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/DigitalLDOLogic.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/DigitalLDOLogic.gds"
+      corner:
+        nmos: "slow"
+        pmos: "slow"
+        temperature: "100 C"
+      supplies:
+        VDD: "1.60 V"
+        GND: "0 V"
+   - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/DigitalLDOLogic.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/DigitalLDOLogic.gds"
+      corner:
+        nmos: "fast"
+        pmos: "fast"
+        temperature: "-40 C"
+      supplies:
+        VDD: "1.95 V"
+        GND: "0 V"
+   - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/DigitalLDOLogic.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/DigitalLDOLogic.gds"
+      corner:
+        nmos: "typical"
+        pmos: "typical"
+        temperature: "025 C"
+      supplies:
+        VDD: "1.80 V"
+        GND: "0 V"
+   - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/pass_transistorsTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/pass_transistors.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/pass_transistors.gds"
+      corner:
+        nmos: "slow"
+        pmos: "slow"
+        temperature: "100 C"
+      supplies:
+        VDD: "1.60 V"
+        GND: "0 V"
+   - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/pass_transistorsTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/pass_transistors.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/pass_transistors.gds"
+      corner:
+        nmos: "fast"
+        pmos: "fast"
+        temperature: "-40 C"
+      supplies:
+        VDD: "1.95 V"
+        GND: "0 V"
+    - library:
+      nldm_liberty_file_deepsubst_meta: "local"
+      nldm_liberty_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/pass_transistorsTT_025C_1v80.lib"
+      lef_file_deepsubst_meta: "local"
+      lef_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/pass_transistors.lef"
+      gds_file_deepsubst_meta: "local"
+      gds_file: "~/cadence/hammer1/asic-labs-fa24/lab4/digital_top/pass_transistors.gds"
+      corner:
+        nmos: "typical"
+        pmos: "typical"
+        temperature: "025 C"
+      supplies:
+        VDD: "1.80 V"
+        GND: "0 V"
+
+# Pin placement constraints
+vlsi.inputs.pin_mode: generated
+vlsi.inputs.pin.generate_mode: semi_auto
+vlsi.inputs.pin.assignments: [
+  {pins: "*", layers: ["met2", "met4"], side: "bottom"}
+]
